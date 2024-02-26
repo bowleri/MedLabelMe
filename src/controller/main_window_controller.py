@@ -306,7 +306,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSlot()
     def menu_open_triggered(self):
         filename, _ = QFileDialog.getOpenFileName(self, 'select file to open', self.model.last_read_dir,
-                                                  filter='*.nii.gz')
+                                                  filter='*.mhd;;*.nii.gz')
         if not filename:
             return
 
@@ -354,7 +354,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         default_filename = os.path.join(self.model.last_save_dir, os.path.basename(self.model.get_img_filepath('raw')))
 
         filename, _ = QFileDialog.getSaveFileName(
-            self, 'select where to save the annotation file', default_filename, filter='*.nii.gz')
+            self, 'select where to save the annotation file', default_filename, filter='*.mhd;;*.nii.gz')
         self.model.save_anno(filename)
 
     @pyqtSlot()
